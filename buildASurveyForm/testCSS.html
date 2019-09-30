@@ -1,0 +1,171 @@
+<!doctype html>
+    <head>
+        <style>
+        body{
+            max-width:600px;
+            margin: 5px auto;
+        }
+        .myBorders {
+            border: solid 1px #6F8CDD;  
+            max-width:500px;
+            margin: 5px 10px;  
+        }
+
+        .myText {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 5px 5px 5px 5px;
+            /* to keeep the width */
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+        footer {
+            background-color: #DDC06F;
+            color: #6F8CDD;
+        }
+        header {
+            background-color: #DDC06F;
+            color: #6F8CDD;
+        }
+        article {
+            background-color: #DDC06F;
+            color: #6F8CDD;
+        }
+
+        li {
+            display: inline;
+            list-style: none;
+        }
+
+        .myLayout {
+            position: relative;
+            border: solid 1px #6F8CDD;  
+            width:500px;
+            height: 500px;
+            margin: 5px 10px;  
+            color:whitesmoke;
+            
+        }
+        .left{
+            position:absolute;
+            top:80px;
+            left:0;
+            right: 50%;
+            bottom:0;
+            text-align: right;
+            /*border: solid 1px #6F8CDD;  */
+            padding-top: 10px;
+            
+        }
+
+        .right{
+            position: absolute;
+            top: 80px;
+            bottom:0;
+            left: 50%;
+            right: 0;
+            text-align: left;
+            /*border: solid 1px #6F8CDD;  */
+            padding-top: 10px;
+
+        }
+
+        .myLayout h2{
+            text-align: center;
+            text-transform: uppercase;
+            line-height: 0.5em;
+        }
+        .myLayout p{
+            margin-left: 10px;
+            line-height: 0.5em;
+            text-align: center;
+        }
+
+        input, label {
+            display:block;
+            padding: 2px;
+            margin: 5px;
+        }
+
+        </style>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+            <title>Test Css</title>
+        
+            <link rel="stylesheet" href="css/main.css" />
+            
+    </head>
+
+    <body>
+        <!-- Document Semantics -->
+        <header class="myBorders myText">
+            header
+        </header>
+        <nav class="myBorders">
+            <ul>
+                <li>
+                    <a hrex="#">link1</a>
+
+                </li>
+                <li>
+                        <a hrex="#">link2</a>
+
+                </li>
+                <li>
+                        <a hrex="#">link3</a>
+
+                </li>
+            </ul>
+        </nav>
+
+        <main class="myBorders">
+            main
+            <section class="myBorders">
+                section
+                    <article class="myBorders">
+                        
+                        <header class="myBorders">
+                                article Header
+
+                        </header>
+                        article
+
+                    </article>
+                    <article class="myBorders">
+                        article
+                    </article>
+                    <article class="myBorders">
+                        article
+                    </article>
+                    <article class="myBorders">
+                        article
+                    </article>
+            </section>
+        </main>
+
+        <div class="myLayout">
+            <form id="survey-form">
+
+            <h2>Heyyyyyyy</h2>
+            <p> Do this survey, would you?</p>
+            <section class="left">
+                    <label for="name" id="name-label">Name </label>
+                    <label for="email" id="email-label">E-Mail</label>
+                    <label for="number" id="number-label" placeholder="Please enter your age">Age</label>
+            </section>
+            <section class="right">
+                <input type="text" id="name" name="name" placeholder="Please enter your name" required>
+                <input type="email" id="email" name="email" placeholder="Please enter your email" required>
+                <input type="number" id="number" name="number" min="0" max="100">
+            </section>
+            
+        </div>
+        </form>
+
+        <footer class="myBorders myText">
+                footer
+        </footer>
+    </body>
+</html>
