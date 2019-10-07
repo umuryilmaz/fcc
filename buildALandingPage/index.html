@@ -160,6 +160,7 @@
             top: 0;
             width: 800px;
             height: 60px;
+
         }
 
         #header-img {
@@ -170,20 +171,106 @@
             top: 10px;
         }
 
-        nav ul{
+        nav ul {
             list-style-type: none;
-            right:0;
+            right: 0;
             display: flex;
+            /*padding: 2;*/
         }
 
-        nav ul li a{
+        nav ul li {
+            margin: 0 1vw;
+            /*font-size: 2vh;*/
+        }
+
+        .nav-link {
             text-decoration: none;
+            color: #6F8CDD;
+            font-family: monospace;
+            font-size: 1.6em;
         }
 
-        nav{
+        .navlink:hover {
+            background-color: beige;
+        }
+
+        nav {
             position: absolute;
             right: 10px;
-            top: 5px;
+            /*top: 5px;*/
+        }
+
+        /*change the layout of the navigation bar for all the screens 
+that have a width less or equal than 500px*/
+
+        @media only screen and (max-width: 500px) {
+
+            /*shows elements in a column*/
+            nav ul {
+                flex-direction: column;
+            }
+
+            /* deletes margin on top or bottom of the a tag*/
+            nav ul li {
+                margin: 0;
+            }
+
+            /* makes sure that the a tag will take the entire screen*/
+            nav ul li a {
+                display: block;
+            }
+        }
+
+        .myLayout {
+            position: relative;
+            /*This will add extra px to my width*/
+            border: solid 1px #6F8CDD;
+
+            /*to remove extra px width*/
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+            max-width: 800px;
+            /*height: 800px;*/
+            color: whitesmoke;
+            top: 60px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        #about {
+            margin : 10px 20px;
+        }
+
+        #players {
+            margin : 10px 20px;
+        }
+
+        #coach {
+            margin : 10px 20px;
+        }
+
+        #videos {
+            position: relative;
+            /*height: 400px;*/
+            align-self:center;
+            margin-top: 40px;
+            margin-bottom:40px;
+        }
+
+        #form{
+            margin: 40px 0px;
+        }
+        section{
+            font-size: 0.8em;
+            position: relative;
+            /*height: 400px;*/
+            align-self:center;
+            margin-top: 40px;
+            margin-bottom:40px;
         }
     </style>
 </head>
@@ -193,20 +280,21 @@
 
     <div id="main">
         <header id="header">
-            <img alt="logo" id="header-img" src="images/128px-Galatasaray_Sports_Club_Logo.png">
+            <img alt="logo" id="header-img"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Galatasaray_Sports_Club_Logo.png/128px-Galatasaray_Sports_Club_Logo.png">
             <nav id="nav-bar">
                 <ul>
                     <li>
-                        <a href="#about">About</a>
+                        <a class="nav-link" href="#about">About</a>
                     </li>
                     <li>
-                        <a href="#players">Players</a>
+                        <a class="nav-link" href="#players">Players</a>
                     </li>
                     <li>
-                        <a href="#coach">Coach</a>
+                        <a class="nav-link" href="#coach">Coach</a>
                     </li>
                     <li>
-                        <a href="#video">Video</a>
+                        <a class="nav-link" href="#videos">Videos</a>
                     </li>
 
                 </ul>
@@ -216,14 +304,41 @@
 
 
         <div class="myLayout">
-            layout
+            <section id="about">
+                <h2> ABOUT </h2>
+                Galatasaray SK was founded in October 1905 (the exact day is disputed, but is traditionally accepted as "17 Teşrinievvel 1321" according to the Rumi calendar, which corresponds to "30 October 1905" according to the Gregorian calendar) by Ali Sami Yen and other students of Galatasaray High School (a high school in Istanbul which was established in 1481) as a football club. Ali Sami Yen became Galatasaray SK's first president and was given the club's membership number "1". The team's first match was against Cadi-Keuy FC and Galatasaray won this match with a score of 2–0.[8] There were discussions about the club's name, in which some suggested Gloria (victory) and others Audace (courage), but it was decided that its name would be Galatasaray.[9]
+                <br>
+                <form id="form" action="https://www.freecodecamp.com/email-submit">
+                Subscribe to newsletter 
+                <input type="email" name="email" id="email" placeholder="your email"> 
+                <input id="submit" type="submit" style="display: inline">
+                
+                </form>
+            </section>
+            <section id="players">
+                    <h2> PLAYERS </h2>
+                    List of players
+                    <br>
+            </section>
+            <section id="coach">
+                    <h2> COACH </h2>
+                    Info about the coach
+                    <br>
+            </section>
+            <section id="videos">
+                    <h2> VIDEO </h2>
+                    
+                    <br>
+                    <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/tfp_ZRY-J3I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </section>
+            <footer>
+                This is footer
+            </footer>
         </div>
 
 
 
-        <footer>
-            This is footer
-        </footer>
+
 
     </div>
 
