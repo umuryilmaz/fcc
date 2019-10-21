@@ -11,16 +11,207 @@
     <link rel="stylesheet" href="css/main.css" />
     <link rel="icon" href="images/favicon.png" />
     <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+        }
 
+        main {
+            position: relative;
+        }
+
+        #navbar {
+            position: fixed;
+            left: 10px;
+            /*border: 1px solid;*/
+            width: 200px;
+        }
+
+        #main-doc {
+            margin-left: 210px;
+            /*border:1px solid;*/
+        }
+
+        .nav-link {
+            display: block;
+            border-top: 1px solid black;
+            height: 30px;
+            text-decoration: none;
+            color: darkorchid;
+            /*font-size: 0.8em;*/
+            padding-top: 15px;
+            padding-left: 10px;
+        }
+
+        .nav-link:hover {
+            background: lightsteelblue;
+        }
+
+        /*
+        main {
+            display: flex;
+            flex-direction: column;
+        }
+        main-doc{
+            display: flex;
+            flex-direction: row;
+        }*/
+
+        /*pre {
+            background: lightgrey;
+            margin: 20px;
+            width: 200px;
+            border: 1px solid black;
+            padding: 1px;
+        }*/
+
+        code {
+            display: block;
+            white-space: pre-wrap;
+            background: lightgrey;
+            width: 200px;
+        }
+
+        .main-section {
+            margin: 50px 0px;
+            /*height: 30vh;*/
+            /*min-height: 100px;*/
+            /*border: 1px solid black;*/
+        }
+
+        section header {
+            font-size: 1.5em;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        p,
+        code {
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        nav header {
+            font-size: 1.5em;
+            font-family: Arial, Helvetica, sans-serif;
+            padding-bottom: 10px;
+        }
     </style>
 </head>
 
 <body>
+    <div id="main">
+        <nav id="navbar">
+            <header>
+                Technical Documentation
+            </header>
+            <a href="#Section1" class="nav-link">Section 1</a>
+            <a href="#Section2" class="nav-link">Section 2</a>
+            <a href="#Section3" class="nav-link">Section 3</a>
+            <a href="#Section3" class="nav-link">Section 4</a>
+            <a href="#Section3" class="nav-link">Section 5</a>
+        </nav>
+        <main id="main-doc">
+            <section class="main-section" id="Section1">
+                <header>Section 1 Header</header>
+                <p>Section 1 is all about Section1 topics which are very much Section 1 related.</p>
+                <code>
+    If $you == "here"{
+        section.read();
+    }
+                </code><br>
+            </section>
+
+            <section class="main-section" id="Section2">
+                <header>Section 2 Header</header>
+                <p>Section 2 is all about Section2 topics which are very much Section 2 related.</p>
+                <code>
+    If $you == "here"{
+        section.read();
+    }
+               </code> <br>
+            </section>
+
+            <section class="main-section" id="Section3">
+                <header>Section 3 Header</header>
+                <p>Section 3 is all about Section3 topics which are very much Section 3 related.</p>
+                <code>
+    If $you == "here"{
+        section.read();
+    }
+                </code><br>
+
+            </section>
+
+            <section class="main-section" id="Section4">
+                <header>Section 4 Header</header>
+                <p>Section 4 is all about Section4 topics which are very much Section 4 related.</p>
+                <code>
+    If $you == "here"{
+        section.read();
+    }
+                </code><br>
+
+            </section>
+
+            <section class="main-section" id="Section5">
+                <header>Section 5 Header</header>
+                <p>Section 5 is all about Section5 topics which are very much Section 5 related.</p>
+                <code>
+    If $you == "here"{
+        section.read();
+    }
+                    </code><br>
+
+            </section>
+
+        </main>
+    </div>
+
+    <script type="text/javascript">
+
+        //content generator
+        (() => {
+            var myArray = document.getElementsByTagName("section");
+            console.log(myArray[0].getElementsByTagName("header")[0].innerHTML);
+
+            for (i=0; i<myArray.length; i++){
+
+                //Using correct header
+                console.log(myArray[i].getElementsByTagName("header")[0].innerHTML);
+                myArray[i].setAttribute("id",(myArray[i].getElementsByTagName("header")[0].innerHTML).replace(/ /g,"_"));
+
+                var codeElement = myArray[i].getElementsByTagName("code")[0];
+                var currentp = myArray[i].getElementsByTagName("p")[0].innerHTML;
+                console.log("Current P:"+currentp);
+                
+                //Adding a shadow P 
+                var myp = document.createElement("p");
+                myp.innerHTML = currentp.split("").reverse().join("");
+                myArray[i].insertBefore(myp, codeElement);
+
+                //Adding List items
+                var list = document.createElement("ul")
+                var listItem = document.createElement("li");
+                var rnd = Math.floor(Math.random() * 10);
+                listItem.innerHTML = currentp.split(" ")[rnd];
+                list.appendChild(listItem);
+                console.log(listItem);
+                myArray[i].insertBefore(list, codeElement);
+
+            }
 
 
+            /*myArray.forEach(function (element) {
+                console.log(element.getElementsByTagName("header")[0].innerHTML);
+            });*/
+        })();
+    </script>
 
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
     <script src="js/scripts.js"></script>
+
+
 
 
 </body>
