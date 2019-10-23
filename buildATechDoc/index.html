@@ -11,16 +11,21 @@
     <link rel="stylesheet" href="css/main.css" />
     <link rel="icon" href="images/favicon.png" />
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 13px;
+
+        @media (max-width: 800px) { 
+            #navbar{
+                display: block;
+                width:100%;
+                border: 1px solid #000;
+            }
+
+            #main-doc{
+                margin-left: 10px;
+            }
         }
 
-        main {
-            position: relative;
-        }
-
-        #navbar {
+        @media (min-width: 801px){
+            #navbar {
             position: fixed;
             left: 10px;
             /*border: 1px solid;*/
@@ -31,6 +36,19 @@
             margin-left: 210px;
             /*border:1px solid;*/
         }
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+        }
+
+        main {
+            position: relative;
+        }
+
+        
 
         .nav-link {
             display: block;
@@ -101,6 +119,7 @@
 
 <body>
     <div id="main">
+        <!-- -->
         <nav id="navbar">
             <header>
                 Technical Documentation
@@ -111,9 +130,10 @@
             <a href="#Section3" class="nav-link">Section 4</a>
             <a href="#Section3" class="nav-link">Section 5</a>
         </nav>
+        <!-- -->
         <main id="main-doc">
             <section class="main-section" id="Section1">
-                <header>Section 1 Header</header>
+                <header>Section 1</header>
                 <p>Section 1 is all about Section1 topics which are very much Section 1 related.</p>
                 <code>
     If $you == "here"{
@@ -123,7 +143,7 @@
             </section>
 
             <section class="main-section" id="Section2">
-                <header>Section 2 Header</header>
+                <header>Section 2</header>
                 <p>Section 2 is all about Section2 topics which are very much Section 2 related.</p>
                 <code>
     If $you == "here"{
@@ -133,7 +153,7 @@
             </section>
 
             <section class="main-section" id="Section3">
-                <header>Section 3 Header</header>
+                <header>Section 3</header>
                 <p>Section 3 is all about Section3 topics which are very much Section 3 related.</p>
                 <code>
     If $you == "here"{
@@ -144,7 +164,7 @@
             </section>
 
             <section class="main-section" id="Section4">
-                <header>Section 4 Header</header>
+                <header>Section 4</header>
                 <p>Section 4 is all about Section4 topics which are very much Section 4 related.</p>
                 <code>
     If $you == "here"{
@@ -155,7 +175,7 @@
             </section>
 
             <section class="main-section" id="Section5">
-                <header>Section 5 Header</header>
+                <header>Section 5</header>
                 <p>Section 5 is all about Section5 topics which are very much Section 5 related.</p>
                 <code>
     If $you == "here"{
@@ -178,12 +198,25 @@
             for (i=0; i<myArray.length; i++){
 
                 //Using correct header
-                console.log(myArray[i].getElementsByTagName("header")[0].innerHTML);
-                myArray[i].setAttribute("id",(myArray[i].getElementsByTagName("header")[0].innerHTML).replace(/ /g,"_"));
+                var sectionH = myArray[i].getElementsByTagName("header")[0].innerHTML;
+                myArray[i].setAttribute("id",sectionH.replace(/ /g,"_"));
+
+
+                console.log("--"+sectionH);
 
                 var codeElement = myArray[i].getElementsByTagName("code")[0];
                 var currentp = myArray[i].getElementsByTagName("p")[0].innerHTML;
                 console.log("Current P:"+currentp);
+
+                //Make sure these are attached to links
+                var nav_links = document.getElementById("navbar").getElementsByTagName("a");
+                
+                for(j=0;j<myArray.length; j++){
+                    if (nav_links[j].innerHTML == sectionH){
+                        console.log(sectionH);
+                        nav_links[j].setAttribute("href", "#"+sectionH.replace(/ /g,"_"));
+                    }
+                }
                 
                 //Adding a shadow P 
                 var myp = document.createElement("p");
